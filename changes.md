@@ -2,6 +2,10 @@ Changelog
 =========
 
 ## Unreleased
+
+<!-- 0.4.1 -->
+
+## [0.4.1] · 2020-03-25
 ### Changed
 - `edit` command now uses `subprocess` and no longer waits.
 
@@ -56,6 +60,7 @@ Changelog
 <!-- Commit Links -->
 
 [Unreleased]: https://github.com/posce/posce/commits/master
+[0.4.1]:      https://github.com/posce/posce/commits/0.4.1
 [0.4.0]:      https://github.com/posce/posce/commits/0.4.0
 [0.3.0]:      https://github.com/posce/posce/commits/0.3.0
 [0.2.0]:      https://github.com/posce/posce/commits/0.2.0
