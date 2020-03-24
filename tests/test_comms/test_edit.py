@@ -2,6 +2,8 @@
 Tests for 'posce.comms.edit'.
 '''
 
+import subprocess
+
 import click
 
 from posce.comms.edit           import edit
@@ -11,20 +13,19 @@ from tests.tools                import out
 def test_edit(book, monkeypatch):
     # setup
     args = {}
-    monkeypatch.setattr(click, 'edit', lambda **k: args.update(k))
+    func = lambda a, **k: args.update({'args': a, **k})
+    monkeypatch.setattr(subprocess, 'run', func)
 
     # success: defaults
     assert out(book, edit, 'alpha') == []
     assert args == {
-        'editor':    None,
-        'extension': '.txt',
-        'filename':  book['alpha'].path,
+        'args':  [book['alpha'].path],
+        'shell': True,
     }
 
     # success: --editor
     assert out(book, edit, 'alpha', '-e', 'test') == []
     assert args == {
-        'editor':    'test',
-        'extension': '.txt',
-        'filename':  book['alpha'].path,
+        'args':  ['test', book['alpha'].path],
+        'shell': True,
     }

@@ -2,6 +2,8 @@
 Click command function 'edit'.
 '''
 
+import subprocess
+
 import click
 
 from posce.comms.base import group
@@ -21,11 +23,5 @@ def edit(book, name, editor):
     '''
 
     note = tools.clui.disambiguate(book, name)
-    func = lambda note: click.edit(
-        editor    = editor or None,
-        extension = f'.{note.ext}',
-        filename  = note.path,
-    )
-
-    if data := func(note):
-        note.write(data)
+    args = [editor, note.path] if editor else [note.path]
+    subprocess.run(args, shell=True)
