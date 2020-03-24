@@ -241,7 +241,7 @@ F.A.Q.
 
 ### Why use this instead of `ls`/`grep`/`wget`/etc?
 
-Posce is *one* app using *one* system on *one* directory. It's a very focused app, and that focus gives it a level of stability and uniformity I enjoy. Also, by using a single notes directory, you can [use disambiguated names](#usage) and get incredible brevity when entering commands.
+Posce is *one* program using *one* codebase on *one* directory. It's a very focused app, and that focus gives it a level of stability and uniformity I enjoy. Also, by using a single notes directory, you can [use disambiguated names](#usage) and get incredible brevity when entering commands.
 
 ### Why environment variables? Why not a config file?
 
