@@ -12,12 +12,12 @@ from tests.tools                import out
 
 def test_repl(book, monkeypatch):
     # setup
-    codeargs = {}
-    monkeypatch.setattr(code, 'interact', lambda **k: codeargs.update(k))
+    args = {}
+    monkeypatch.setattr(code, 'interact', lambda **k: args.update(k))
 
     # success: defaults
     assert out(book, repl) == []
-    assert codeargs == {
+    assert args == {
         'banner':  VERSION_STRING,
         'local':   {'book': book, 'group': group},
         'exitmsg': '',

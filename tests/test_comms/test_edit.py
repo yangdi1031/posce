@@ -10,12 +10,12 @@ from tests.tools                import out
 
 def test_edit(book, monkeypatch):
     # setup
-    editargs = {}
-    monkeypatch.setattr(click, 'edit', lambda **k: editargs.update(k))
+    args = {}
+    monkeypatch.setattr(click, 'edit', lambda **k: args.update(k))
 
     # success: defaults
     assert out(book, edit, 'alpha') == []
-    assert editargs == {
+    assert args == {
         'editor':    None,
         'extension': '.txt',
         'filename':  book['alpha'].path,
@@ -23,7 +23,7 @@ def test_edit(book, monkeypatch):
 
     # success: --editor
     assert out(book, edit, 'alpha', '-e', 'test') == []
-    assert editargs == {
+    assert args == {
         'editor':    'test',
         'extension': '.txt',
         'filename':  book['alpha'].path,

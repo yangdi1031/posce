@@ -8,13 +8,11 @@ from posce.comms.clip           import clip
 from tests.test_items.test_book import book
 from tests.tools                import out
 
-def test_clip(book):
-    # setup (to preserve pre-test clipboard)
-    pre = pyperclip.paste()
+def test_clip(book, monkeypatch):
+    # setup
+    args = []
+    monkeypatch.setattr(pyperclip, 'copy', lambda *a: args.extend(a))
 
     # success: defaults
     assert out(book, clip, 'alpha') == []
-    assert pyperclip.paste() == 'alpha'
-
-    # teardown
-    pyperclip.copy(pre)
+    assert args == ['alpha']
