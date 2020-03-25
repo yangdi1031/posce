@@ -12,7 +12,7 @@ class Note:
     A single plaintext note file.
     '''
 
-    __slots__ = ['base', 'ext', 'name', 'path', 'time']
+    __slots__ = ['base', 'ext', 'name', 'path', 'size', 'time']
 
     def __init__(self, path):
         '''
@@ -23,6 +23,7 @@ class Note:
         self.base = tools.path.base(self.path)
         self.ext  = tools.path.ext(self.path)
         self.name = tools.path.name(self.path)
+        self.size = tools.file.size(self.path)
         self.time = tools.file.mtime(self.path)
 
     def __contains__(self, string):

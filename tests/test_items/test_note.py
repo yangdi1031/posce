@@ -21,6 +21,7 @@ def test_init(note):
     assert note.base == 'alpha.txt'
     assert note.ext  == 'txt'
     assert note.name == 'alpha'
+    assert note.size == 12
     assert note.time == time.localtime()
 
 def test_contains(note):
