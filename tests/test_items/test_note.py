@@ -3,6 +3,7 @@ Tests for 'posce.items.note'.
 '''
 
 import os.path
+import time
 
 import pytest
 
@@ -20,6 +21,7 @@ def test_init(note):
     assert note.base == 'alpha.txt'
     assert note.ext  == 'txt'
     assert note.name == 'alpha'
+    assert note.time == time.localtime()
 
 def test_contains(note):
     # success

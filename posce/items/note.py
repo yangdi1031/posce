@@ -23,6 +23,7 @@ class Note:
         self.base = tools.path.base(self.path)
         self.ext  = tools.path.ext(self.path)
         self.name = tools.path.name(self.path)
+        self.time = tools.file.mtime(self.path)
 
     def __contains__(self, string):
         '''
