@@ -2,6 +2,8 @@
 Tests for 'posce.tools.file'.
 '''
 
+import time
+
 import pytest
 
 from posce.tools import file
@@ -59,6 +61,14 @@ def test_find(tmpdir):
         str(dire.join('alpha.txt')),
         str(dire.join('charlie.txt')),
     ]
+
+def test_mtime(tmpdir):
+    # setup
+    path = tmpdir.join('mtime.txt')
+    path.write('test')
+
+    # success
+    assert file.mtime(path) == time.localtime()
 
 def test_read(tmpdir):
     # setup

@@ -5,6 +5,7 @@ File I/O and discovery functions.
 import glob
 import os
 import shutil
+import time
 
 OPTIONS = {
     'encoding': 'utf-8',
@@ -50,6 +51,14 @@ def find(dire, term):
 
     pattern = os.path.normpath(os.path.join(dire, term))
     yield from glob.iglob(pattern)
+
+def mtime(path):
+    '''
+    Return a file's modification time as a time struct.
+    '''
+
+    secs = os.path.getmtime(path)
+    return time.localtime(secs)
 
 def read(path):
     '''
