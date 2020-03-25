@@ -25,11 +25,6 @@ def list(book, glob, sort, reverse):
     List all notes matching GLOB (default "*").
     '''
 
-    key = {
-        'name': lambda note: note.name,
-        'size': lambda note: len(note),
-        'time': lambda note: note.time,
-    }[sort]
-
+    key = lambda note: getattr(note, sort)
     for note in sorted(book.match(glob), key=key, reverse=reverse):
         click.echo(note.name)
