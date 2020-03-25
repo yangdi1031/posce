@@ -91,6 +91,16 @@ def rename(path, name):
     dest = os.path.join(dire, f'{name}.{ext}')
     shutil.move(path, dest)
 
+def size(path):
+    '''
+    Return a file's size in bytes.
+    '''
+
+    try:
+        return os.path.getsize(path)
+    except:
+        return None
+
 def write(path, string):
     '''
     Write a string to a file.

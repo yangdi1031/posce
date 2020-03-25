@@ -101,6 +101,17 @@ def test_rename(tmpdir):
     assert not path.exists()
     assert     tmpdir.join('dest.txt').exists()
 
+def test_size(tmpdir):
+    # setup
+    path = tmpdir.join('size.txt')
+    path.write('test')
+
+    # success: existing file
+    assert file.size(path) == 4
+
+    # success: nonexistent file
+    assert file.size('/nope.txt') == None
+
 def test_write(tmpdir):
     # setup
     path = tmpdir.join('write.txt')
