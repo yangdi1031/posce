@@ -4,6 +4,9 @@ Changelog
 Unreleased
 ----------
 
+[1.0.0] · 2020-03-25
+--------------------
+
 ### Added
 - `list` command can now sort by file modification time.
 
@@ -62,6 +65,7 @@ Unreleased
 - Basic project files.
 
 [Unreleased]: https://github.com/posce/posce/commits/master
+[1.0.0]:      https://github.com/posce/posce/commits/1.0.0
 [0.4.1]:      https://github.com/posce/posce/commits/0.4.1
 [0.4.0]:      https://github.com/posce/posce/commits/0.4.0
 [0.3.0]:      https://github.com/posce/posce/commits/0.3.0
