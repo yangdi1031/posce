@@ -67,8 +67,11 @@ def test_mtime(tmpdir):
     path = tmpdir.join('mtime.txt')
     path.write('test')
 
-    # success
+    # success: existing file
     assert file.mtime(path) == time.localtime()
+
+    # success: nonexistent file
+    assert file.mtime('/nope.txt') == None
 
 def test_read(tmpdir):
     # setup

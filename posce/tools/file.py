@@ -57,8 +57,11 @@ def mtime(path):
     Return a file's modification time as a time struct.
     '''
 
-    secs = os.path.getmtime(path)
-    return time.localtime(secs)
+    try:
+        secs = os.path.getmtime(path)
+        return time.localtime(secs)
+    except:
+        return None
 
 def read(path):
     '''
