@@ -7,10 +7,13 @@ import os
 import shutil
 import time
 
+from posce.tools.path import strpath
+
 OPTIONS = {
     'encoding': 'utf-8',
 }
 
+@strpath
 def append(path, string, *, sep='\n'):
     '''
     Append a string to a file.
@@ -19,6 +22,7 @@ def append(path, string, *, sep='\n'):
     with open(path, 'a', **OPTIONS) as file:
         file.write(sep + string)
 
+@strpath
 def copy(path, name):
     '''
     Copy a file to another name in the same directory.
@@ -29,6 +33,7 @@ def copy(path, name):
     dest = os.path.join(dire, name + ext)
     shutil.copyfile(path, dest)
 
+@strpath
 def create(path, string):
     '''
     Write a string to a new file.
@@ -37,6 +42,7 @@ def create(path, string):
     with open(path, 'x', **OPTIONS) as file:
         file.write(string)
 
+@strpath
 def exists(path):
     '''
     Return true if a file or directory exists.
@@ -44,6 +50,7 @@ def exists(path):
 
     return os.path.exists(path)
 
+@strpath
 def find(dire, term):
     '''
     Yield all files in a directory with names matching a glob pattern.
@@ -52,6 +59,7 @@ def find(dire, term):
     pattern = os.path.normpath(os.path.join(dire, term))
     yield from glob.iglob(pattern)
 
+@strpath
 def mtime(path):
     '''
     Return a file's modification time as a time struct.
@@ -63,6 +71,7 @@ def mtime(path):
     except:
         return None
 
+@strpath
 def read(path):
     '''
     Return the contents of a file as a string.
@@ -71,6 +80,7 @@ def read(path):
     with open(path, 'r', **OPTIONS) as file:
         return file.read()
 
+@strpath
 def reext(path, ext):
     '''
     Move a file to a different extension in the same directory.
@@ -81,6 +91,7 @@ def reext(path, ext):
     dest = os.path.join(dire, f'{name}.{ext}')
     shutil.move(path, dest)
 
+@strpath
 def rename(path, name):
     '''
     Move a file to a different name in the same directory.
@@ -91,6 +102,7 @@ def rename(path, name):
     dest = os.path.join(dire, f'{name}.{ext}')
     shutil.move(path, dest)
 
+@strpath
 def size(path):
     '''
     Return a file's size in bytes.
@@ -101,6 +113,7 @@ def size(path):
     except:
         return None
 
+@strpath
 def write(path, string):
     '''
     Write a string to a file.

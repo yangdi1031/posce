@@ -18,7 +18,7 @@ def test_make(book, tmpdir):
     assert book['make'].read() == ''
 
     # success: --file FILE
-    assert out(book, make, 'make2', '-f', str(file)) == []
+    assert out(book, make, 'make2', '-f', file) == []
     assert book['make2'].read() == 'test'
 
     # failure: note already exists

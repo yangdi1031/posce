@@ -14,7 +14,7 @@ def test_dump(book, tmpdir):
     dest = tmpdir.join('test.zip')
 
     # success: defaults
-    assert out(book, dump, str(dest)) == []
+    assert out(book, dump, dest) == []
     with zipfile.ZipFile(dest, 'r') as zipf:
         assert zipf.namelist() == ['alpha.txt', 'bravo.txt', 'charlie.txt']
         assert zipf.open('alpha.txt').read()   == b'alpha'
@@ -22,6 +22,6 @@ def test_dump(book, tmpdir):
         assert zipf.open('charlie.txt').read() == b'charliecharliecharlie'
 
     # success: --level 0
-    assert out(book, dump, str(dest), '-l', '0') == []
+    assert out(book, dump, dest, '-l', '0') == []
     with zipfile.ZipFile(dest, 'r') as zipf:
         assert os.stat(dest).st_size == 359

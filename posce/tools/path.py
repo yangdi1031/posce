@@ -10,6 +10,16 @@ EXPANSIONS = {
     '$': os.path.expandvars,
 }
 
+def strpath(func):
+    '''
+    Decorate a function to cast the first argument to a string.
+    '''
+
+    def deco(path, *args, **kwargs):
+        return func(str(path), *args, **kwargs)
+    return deco
+
+@strpath
 def base(path):
     '''
     Return a path's basename with the extension.
@@ -17,6 +27,7 @@ def base(path):
 
     return os.path.basename(path)
 
+@strpath
 def clean(path):
     '''
     Return a normalised path.
@@ -24,6 +35,7 @@ def clean(path):
 
     return os.path.normpath(path)
 
+@strpath
 def expand(path):
     '''
     Return a clean variable-expanded path.
@@ -34,6 +46,7 @@ def expand(path):
             path = func(path)
     return path
 
+@strpath
 def ext(path):
     '''
     Return a path's extension without a dot.
@@ -47,8 +60,10 @@ def join(*elems):
     Return a clean joined filepath.
     '''
 
+    elems = map(str, elems)
     return os.path.normpath(os.path.join(*elems))
 
+@strpath
 def name(path):
     '''
     Return a path's basename without the extension.
@@ -57,6 +72,7 @@ def name(path):
     base = os.path.basename(path)
     return os.path.splitext(base)[0]
 
+@strpath
 def parent(path):
     '''
     Return a path's parent directory.
