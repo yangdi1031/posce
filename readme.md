@@ -172,7 +172,10 @@ charlie
 List all notes with names matching `GLOB` (default `*`).
 
 - `-r` `--reverse`: Reverse sorting order.
-- `-s` `--sort (name|size)`: Sort notes by name or size.
+- `-s` `--sort ATTR`: Sort notes by one of these attributes:
+    - `name`: Note name, alphabetically.
+    - `size`: Note size in bytes.
+    - `time`: Note file modification time.
 
 ~~~bash
 $ posce list

@@ -4,6 +4,9 @@ Changelog
 Unreleased
 ----------
 
+### Added
+- `list` command can now sort by file modification time.
+
 [0.4.1] · 2020-03-25
 --------------------
 

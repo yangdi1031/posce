@@ -17,7 +17,7 @@ from posce.comms.base import group
 @click.option('-s', '--sort',
     help    = 'Sort notes by attribute.',
     default = 'name',
-    type    = click.Choice(['name', 'size']),
+    type    = click.Choice(['name', 'size', 'time']),
 )
 @click.pass_obj
 def list(book, glob, sort, reverse):
@@ -28,6 +28,7 @@ def list(book, glob, sort, reverse):
     key = {
         'name': lambda note: note.name,
         'size': lambda note: len(note),
+        'time': lambda note: note.time,
     }[sort]
 
     for note in sorted(book.match(glob), key=key, reverse=reverse):
